@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,800&display=swap');
+:root {
+    --g1: #ff00d4;
+    --g2: #00ddff;
+}
+    
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+    
+    to {
+        background-position: -200% center;  
+    }
+}
+    
+body {
+    animation: background-pan 10s linear infinite;
+    background: linear-gradient(
+        to right,
+        var(--g1),
+        var(--g2),
+        var(--g1)
+    );
+    background-size: 200%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0px;
+    
+    font-family: 'Poppins', sans-serif;
+}
+    
+body.toggled {
+    animation: none;
+}
+    
+body.toggled > #title {
+    opacity: 0;
+}
+    
+body.toggled > #icon {
+    opacity: 1;
+}
+    
+body.toggled > #tiles > .tile:hover {
+    opacity: 0.1 !important;
+}
+    
+.centered {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+    
+#tiles {
+    height: calc(100vh - 1px);
+    width: calc(100vw - 1px);
+    position: relative;
+    z-index: 2;
+    
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+}
+    
+.tile {
+    cursor: pointer;
+    position: relative;
+}
+    
+.tile:hover:before {
+    background-color: rgb(30, 30, 30);
+}
+    
+.tile:before {
+    background-color: rgb(15, 15, 15);
+    content: "";
+    inset: 0.5px;
+    position: absolute;
+}
+    
+#title {
+    color: white;
+    font-family: "Rubik", sans-serif;
+    font-size: 6vw;
+    margin: 0px;
+    pointer-events: none;
+    transition: opacity 1200ms ease;
+    width: 50vw;
+    z-index: 3;
+}
+    
+#title > .fancy {
+    animation: background-pan2 15s linear infinite;
+    background: linear-gradient(
+        to right,
+        var(--g1),
+        var(--g2),
+        var(--g1)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    line-height: 0.9em;
+}
+
+@keyframes background-pan2 {
+    from {
+        background-position: 0vw center;
+    }
+    
+    to {
+        background-position: 100vw center;  
+    }
+}
+    
+#icon {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 40vmin;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1200ms ease;
+    z-index: 1;
+}
+    
+.header01{
+    padding-top: 7px;
+    width: auto;
+    font-size: 16px;
+    transition: font-size 0.1s ease;
+}
+.header01:hover{
+    cursor: pointer;
+    font-size: 20px;
+}
+.header_text:hover{
+    cursor: pointer;
+}

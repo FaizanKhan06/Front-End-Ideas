@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,800&display=swap');</style>
+    <script src="https://kit.fontawesome.com/0dc0dd2589.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-color: black;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        .Light_div{
+            position: fixed;
+            top: 0vh;
+            width: 80vw;
+        }
+        .Light_img_dark{
+            width: 100%;
+        }
+        .Masking_div{
+            -webkit-mask-image: url(Light_mask.png);
+            -webkit-mask-repeat: no-repeat;
+            mask-image: url(Light_mask.png);
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            
+            width: 100%;
+
+            position: absolute;
+            top: 0vh;
+            left: 0vw;
+            transform-origin: 49.96% 45.3%;
+            
+            animation: mymove 3s infinite ease-in-out;
+        }
+        @keyframes mymove {
+            0%{
+                transform: rotate(360deg);
+            }
+            50%{
+                transform: rotate(180deg);
+            }
+            100%{
+                transform: rotate(0deg);
+            }
+        }
+        .Light_img_Light{
+            width: 100%;
+            display: block;
+            transform-origin: inherit;
+            transform: rotate(0deg);
+            animation: mymove1 3s infinite ease-in-out;
+        }
+        @keyframes mymove1 {
+            0%{
+                transform: rotate(0deg);
+            }
+            50%{
+                transform: rotate(180deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        .header01{
+            padding-top: 7px;
+            width: auto;
+            font-size: 16px;
+            transition: font-size 0.1s ease;
+        }
+        .header01:hover{
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .header_text:hover{
+            cursor: pointer;
+        }
+    </style>
+    <title>Light.agency</title>
+    <link rel="icon" type="image/x-icon" href="Light_icon.ico">
+</head>
+<body>
+    <div class="Light_div">
+        <img src="Light_img_Dark.png" class="Light_img_dark">
+        <div class="Masking_div">
+            <img src="Light_img_Light.png" class="Light_img_Light">
+        </div>
+    </div>
+    
+    <p class="header_text" style="color: white;z-index: 1000000;font-weight: bold;font-size: 20px;padding-left: 3vh;width: clamp(10vw, calc(26vw - 5vw), 26vw);"><i class="fa-sharp fa-solid fa-circle-half-stroke"></i> Light.agency</p>
+    <div style="color: white;display: flex;flex-wrap: wrap;z-index: 1000000;position: fixed;gap: 6vw;position: fixed;right: 4vw;top: 0;">
+        
+        <p class="header_text header01">Demos</p>
+        <p class="header_text header01">About</p>
+        <p class="header_text header01">Blog</p>
+        <p class="header_text header01">Pages</p>
+        <p class="header_text header01">Contact</p>
+
+        <p class="header_text header01" style="font-weight: bold;">Lets Chat  <i class="fa-solid fa-arrow-right"></i></p>
+    </div>
+
+    <img src="Asthetic1.png" style="position: fixed;right: 0;top: 0;opacity: 0.8;width: 20vw;">
+    <img src="Asthetic2.png" style="position: fixed;width: clamp(26vw, calc(40vw - 5vw), 40vw);bottom: 0vh; opacity: 0.5;">
+    <img src="Asthetic2.png" style="position: fixed;width: clamp(26vw, calc(40vw - 5vw), 40vw);top: 0vh;right: 0vw;transform: rotate(180deg); opacity: 0.6;">
+</body>

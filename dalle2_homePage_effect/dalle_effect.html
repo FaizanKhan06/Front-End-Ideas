@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <script src="https://kit.fontawesome.com/0dc0dd2589.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>FALL·E.agency</title>
+</head>
+<body>
+
+    <div style="color: white;position: relative;z-index: 1000;width: fit-content;top: 20vh;margin-left: 3vw;">
+        <p style="width: fit-content;margin: 0;font-weight: 400;font-size: 18vw;">FALL·E 2</p>
+        <p style="width: 90vw;margin: 0;font-weight: 400;font-size: 3vw;">FALL·E 2 is a failed AI system that cannot create realistic images and art from a description in natural language.</p>
+    </div>
+
+    <p class="header_text" style="position: fixed;top: 0;color: white;z-index: 1000000;font-weight: bold;font-size: 20px;padding-left: 3vh;width: clamp(10vw, calc(26vw - 5vw), 26vw);"><i class="fa-solid fa-eye"></i> FALL·E.agency</p>
+    <div style="color: white;display: flex;flex-wrap: wrap;z-index: 1000000;gap: 6vw;position: fixed;right: 4vw;top: 0;">
+        
+        <p class="header_text header01">Demos</p>
+        <p class="header_text header01">About</p>
+        <p class="header_text header01">Blog</p>
+        <p class="header_text header01">Pages</p>
+        <p class="header_text header01">Contact</p>
+
+        <p class="header_text header01" style="font-weight: bold;">Lets Chat  <i class="fa-solid fa-arrow-right"></i></p>
+    </div>
+
+
+    <div class="images_div">
+        <img class="image" data-index="0" data-status="inactive" src="images/1.png">
+        <img class="image" data-index="1" data-status="inactive" src="images/2.jpg">
+        <img class="image" data-index="2" data-status="inactive" src="images/3.jpg">
+        <img class="image" data-index="3" data-status="inactive" src="images/4.jpg">
+        <img class="image" data-index="4" data-status="inactive" src="images/5.jpg">
+        <img class="image" data-index="5" data-status="inactive" src="images/6.jpg">
+        <img class="image" data-index="6" data-status="inactive" src="images/7.jpeg">
+        <img class="image" data-index="7" data-status="inactive" src="images/8.jpg">
+        <img class="image" data-index="8" data-status="inactive" src="images/9.jpeg">
+        <img class="image" data-index="9" data-status="inactive" src="images/10.png">
+        <img class="image" data-index="10" data-status="inactive" src="images/11.jpg">
+        <img class="image" data-index="11" data-status="inactive" src="images/12.webp">
+        <img class="image" data-index="12" data-status="inactive" src="images/13.jpeg">
+        <img class="image" data-index="13" data-status="inactive" src="images/14.jpg">
+        <img class="image" data-index="14" data-status="inactive" src="images/15.jpeg">
+        <img class="image" data-index="15" data-status="inactive" src="images/17.jpeg">
+        <img class="image" data-index="16" data-status="inactive" src="images/18.jpeg">
+        <img class="image" data-index="17" data-status="inactive" src="images/19.jpeg">
+        <img class="image" data-index="18" data-status="inactive" src="images/20.jpeg">
+        <img class="image" data-index="19" data-status="inactive" src="images/21.webp">
+        <img class="image" data-index="20" data-status="inactive" src="images/22.webp">
+        <img class="image" data-index="21" data-status="inactive" src="images/23.webp">
+        <img class="image" data-index="22" data-status="inactive" src="images/24.webp">
+        <img class="image" data-index="23" data-status="inactive" src="images/25.webp">
+        <img class="image" data-index="24" data-status="inactive" src="images/26.webp">
+        <img class="image" data-index="25" data-status="inactive" src="images/27.webp">
+        <img class="image" data-index="26" data-status="inactive" src="images/28.webp">
+        <img class="image" data-index="27" data-status="inactive" src="images/29.webp">
+        <img class="image" data-index="28" data-status="inactive" src="images/30.png">
+
+    </div>
+
+    <script>
+        const images = document.getElementsByClassName("image");
+        let globalIndex=0;
+        const activate = (image,x,y,index)=>{
+            image.style.left = x+'px';
+            image.style.top = y+'px';
+
+            image.classList.add("image_active");
+
+            image.style.zIndex = index;
+
+            setTimeout(function(){ removeImage(image) }, randomNumber(1000,1500));
+        }
+
+        const distanceFromLast = (x,y)=> {
+            return Math.hypot(x-last.x,y-last.y);
+        }
+        function randomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+        addImage();
+        function addImage(){
+            let x = randomNumber(0,window.innerWidth);
+            let y = randomNumber(0,window.innerHeight);
+            const lead = images[globalIndex % images.length];
+            activate(lead,x,y,globalIndex);
+            globalIndex++;
+            
+            setTimeout(addImage,randomNumber(400,600));
+        }
+        function removeImage(image){
+            image.classList.remove("image_active");
+            image.classList.add("image_inactive")
+        }
+
+    </script>
+</body>

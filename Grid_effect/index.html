@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <script src="https://kit.fontawesome.com/0dc0dd2589.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_homePage.css">
+    <title>Chess.agency</title>
+    <link rel="icon" type="image/x-icon" href="images/eyes.ico">
+</head>
+<body>
+
+    <p class="header_text" style="position: fixed;top: 0;color: white;z-index: 1000000;font-weight: bold;font-size: 20px;padding-left: 3vh;width: clamp(10vw, calc(26vw - 5vw), 26vw);"><i class="fa-solid fa-chess"></i> Chess.agency</p>
+    <div style="color: white;display: flex;flex-wrap: wrap;z-index: 1000000;gap: 6vw;position: fixed;right: 4vw;top: 0;">
+        <p class="header_text header01">Demos</p>
+        <p class="header_text header01">About</p>
+        <p class="header_text header01">Blog</p>
+        <p class="header_text header01">Pages</p>
+        <p class="header_text header01">Contact</p>
+
+        <p class="header_text header01" style="font-weight: bold;">Lets Chat  <i class="fa-solid fa-arrow-right"></i></p>
+    </div>
+
+    <div id="tiles"></div>
+    
+    <h1 id="title" class="centered">The name of the game is <span class="fancy">Chess</span>.</h1>
+    
+    <i id="icon" class="fa-solid fa-chess centered"></i>
+    
+    <script src="anime.min.js"></script>
+    <script src="anime.js"></script>
+    <script src="anime.es.js"></script>
+
+    <script>
+
+
+        const wrapper = document.getElementById("tiles");
+        let columns = 0,
+            rows = 0,
+            toggled = false;
+        
+        const toggle = () => {
+          toggled = !toggled;
+          
+          document.body.classList.toggle("toggled");
+        }
+        
+        const handleOnClick = index => {
+          toggle();
+          
+          anime({
+            targets: ".tile",
+            opacity: toggled ? 0 : 1,
+            delay: anime.stagger(50, {
+              grid: [columns, rows],
+              from: index
+            })
+          });
+        }
+        
+        const createTile = index => {
+          const tile = document.createElement("div");
+          
+          tile.classList.add("tile");
+          
+          tile.style.opacity = toggled ? 0 : 1;
+          
+          tile.onclick = e => handleOnClick(index);
+          
+          return tile;
+        }
+        
+        const createTiles = quantity => {
+          Array.from(Array(quantity)).map((tile, index) => {
+            wrapper.appendChild(createTile(index));
+          });
+        }
+        
+        const createGrid = () => {
+          wrapper.innerHTML = "";
+          
+          const size = document.body.clientWidth > 800 ? 100 : 50;
+          
+          columns = Math.floor(document.body.clientWidth / size);
+          rows = Math.floor(document.body.clientHeight / size);
+          
+          wrapper.style.setProperty("--columns", columns);
+          wrapper.style.setProperty("--rows", rows);
+          
+          createTiles(columns * rows);
+        }
+        
+        createGrid();
+        
+        window.onresize = () => createGrid();
+
+    </script>
+</body>

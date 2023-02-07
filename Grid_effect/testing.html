@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <script src="https://kit.fontawesome.com/0dc0dd2589.js" crossorigin="anonymous"></script>
+    <title>Chess.agency</title>
+    <link rel="icon" type="image/x-icon" href="images/eyes.ico">
+    <style>
+        body {
+  margin: 20px;
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 1.2em;
+}
+
+#anime-demo {
+  position: relative;
+  left: 20vw;
+}
+
+button {
+  background: orange;
+  color: white;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: 'Lato';
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  background: blue;
+}
+
+.box, .square {
+  pointer-events: none;
+  background-color: black;
+  margin: 4px;
+  display: inline-block;
+  top: -10px;
+  left: -10px;
+  opacity: 0.6;
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.color-codes {
+  position: absolute;
+  top: 0;
+}
+
+.box {
+  position: relative;
+  top: 8px;
+}
+
+.square {
+  position: absolute;
+}
+
+.square.blue, .box.blue {
+  background: blue;
+}
+
+.square.red, .box.red {
+  background: red;
+}
+
+.square.orange, .box.orange {
+  background: orange;
+}
+
+.square.green, .box.green {
+  background: green;
+}
+
+.controls {
+  margin-top: 20px;
+  text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <div id="anime-demo">
+        <svg width="256" height="112"><path d="M8,56 C8,33.90861 25.90861,16 48,16 C70.09139,16 88,33.90861 88,56 C88,78.09139 105.90861,92 128,92 C150.09139,92 160,72 160,56 C160,40 148,24 128,24 C108,24 96,40 96,56 C96,72 105.90861,92 128,92 C154,93 168,78 168,56 C168,33.90861 185.90861,16 208,16 C230.09139,16 248,33.90861 248,56 C248,78.09139 230.09139,96 208,96 L48,96 C25.90861,96 8,78.09139 8,56 Z" fill="none" stroke="currentColor" stroke-width="1" ></path></svg>
+        <div class="square blue"></div>
+        <div class="square red"></div>
+        <div class="square orange"></div>
+        <div class="square green"></div>
+    </div>
+  
+        
+        <div class="color-codes">
+          <p><span class="box blue"></span> : Linear</p>
+          <p><span class="box red"></span> : easeInCubic</p>
+          <p><span class="box orange"></span> : easeOutCubic</p>
+          <p><span class="box green"></span> : easeInOutCubic</p>
+        </div>
+
+    <script src="anime.es.js"></script>
+    <script src="anime.js"></script>
+    <script src="anime.min.js"></script>
+    <script>
+        var path = anime.path('path');
+
+var easings = ['linear', 'easeInCubic', 'easeOutCubic', 'easeInOutCubic'];
+
+var motionPath = anime({
+  targets: '.square',
+  translateX: path('x'),
+  translateY: path('y'),
+  rotate: path('angle'),
+  easing: function (el, i) {
+    return easings[i];
+  },
+  duration: 10000,
+  loop: true
+});
+    </script>
+</body>

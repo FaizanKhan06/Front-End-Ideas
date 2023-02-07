@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <script src="https://kit.fontawesome.com/0dc0dd2589.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Camera.agency</title>
+</head>
+<body>
+
+    <img src="bg.jpeg" class="background_img">
+
+    <p class="header_text" style="position: fixed;top: 0;color: white;z-index: 1000000;font-weight: bold;font-size: 20px;padding-left: 3vh;width: clamp(10vw, calc(26vw - 5vw), 26vw);"><i class="fa-solid fa-camera"></i> Camera.agency</p>
+    <div style="color: white;display: flex;flex-wrap: wrap;z-index: 1000000;gap: 6vw;position: fixed;right: 4vw;top: 0;">
+        
+        <p class="header_text header01">Demos</p>
+        <p class="header_text header01">About</p>
+        <p class="header_text header01">Blog</p>
+        <p class="header_text header01">Pages</p>
+        <p class="header_text header01">Contact</p>
+
+        <p class="header_text header01" style="font-weight: bold;">Lets Chat  <i class="fa-solid fa-arrow-right"></i></p>
+    </div>
+
+
+    <img class="image" data-index="0" data-status="inactive" src="images/1.avif">
+    <img class="image" data-index="1" data-status="inactive" src="images/2.avif">
+    <img class="image" data-index="2" data-status="inactive" src="images/3.avif">
+    <img class="image" data-index="3" data-status="inactive" src="images/4.avif">
+    <img class="image" data-index="4" data-status="inactive" src="images/5.avif">
+    <img class="image" data-index="5" data-status="inactive" src="images/6.avif">
+    <img class="image" data-index="6" data-status="inactive" src="images/7.avif">
+    <img class="image" data-index="7" data-status="inactive" src="images/8.avif">
+    <img class="image" data-index="8" data-status="inactive" src="images/9.avif">
+    <img class="image" data-index="9" data-status="inactive" src="images/10.avif">
+
+    <script>
+        const images = document.getElementsByClassName("image");
+        let globalIndex=0;
+        let last = { x:0,y:0};
+        const activate = (image,x,y,index)=>{
+            image.style.left = x+'px';
+            image.style.top = y+'px';
+
+            image.dataset.status = "active";
+
+            image.style.zIndex = index;
+
+            last = {x,y};
+        }
+
+        const distanceFromLast = (x,y)=> {
+            return Math.hypot(x-last.x,y-last.y);
+        }
+        window.onmousemove = e => {
+            if(distanceFromLast(e.clientX,e.clientY)>100){
+                const lead = images[globalIndex % images.length];
+                const tail = images[(globalIndex-5)%images.length];
+                activate(lead,e.clientX,e.clientY,globalIndex);
+                globalIndex++;
+            }
+        }
+    </script>
+</body>

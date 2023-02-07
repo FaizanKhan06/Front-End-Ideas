@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,800&display=swap');
+@property --a {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 10deg;
+}
+
+.text_des{
+  color: black;
+  font-weight: 700;
+  font-size: 70px;
+  margin: 200px 30px;
+  width: 350px;
+}
+
+.box {
+  --a:360deg; /*  needed for firefox to have a valid output */
+  width:100vw;
+  height:100vh;
+  position: fixed;
+  top: 0;
+  background:conic-gradient(from var(--a), rgba(30,52,56,1),rgba(212,223,228,1));
+  animation: rotater 3.5s infinite linear;
+}
+
+@keyframes rotater {
+  0%{
+    --a:360deg;
+  }
+  100%{
+    --a:0deg;
+  }
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.header01{
+  padding-top: 7px;
+  width: auto;
+  font-size: 16px;
+  transition: font-size 0.1s ease;
+}
+.header01:hover{
+  cursor: pointer;
+  font-size: 20px;
+}
+.header_text:hover{
+  cursor: pointer;
+}
